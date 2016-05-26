@@ -1,6 +1,6 @@
 {
-  "name": "gtts.js",
-  "version": "0.1.0",
+  "name": "gtts",
+  "version": "0.1.1",
   "description": "a ported version of gTTS python library which is a interface to Google's Text to Speech API",
   "main": "index.js",
   "bin": {
