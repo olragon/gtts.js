@@ -13,6 +13,8 @@ spoken text by tokenizing long sentences where the speech would naturally pause.
 
 ## How to use
 
+### Use save method
+
 ```
 const gTTS = require('gtts');
 var gtts = new gTTS('text to speak', 'en');
@@ -21,6 +23,24 @@ gtts.save('/tmp/hello.mp3', function (err, result) {
   console.log('Success! Open file /tmp/hello.mp3 to hear result.');
 });
 ```
+
+### Use stream method
+
+```
+const express = require('express');
+const app = express();
+const Gtts = require('gtts');
+
+app.get('/hear', function (req, res) {
+  const gtts = new Gtts(req.query.text, req.query.lang);
+  gtts.stream().pipe(res);
+});
+
+app.listen(3000, function () {
+  console.log('Open url to hear Hallelujah http://localhost:3000/hear?lang=en&text=Hallelujah');
+});
+```
+
 
 ## Command line utility
 
@@ -81,3 +101,8 @@ gtts.save('/tmp/hello.mp3', function (err, result) {
 * 'tr' : 'Turkish'
 * 'vi' : 'Vietnamese'
 * 'cy' : 'Welsh'
+
+## Contributors
+
+* Eduardo San Martin Morote (posva)
+* Long Nguyen (olragon)
